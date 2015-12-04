@@ -1,0 +1,24 @@
+public class SpilSystemArray {
+
+    public String spilSystem;
+    public String firegangefire;
+    public String defensiv;
+    public String offensiv;
+    public String hailMary;
+
+    public SpilSystemArray(String spilSystem, String firegangefire, String defensiv, String offensiv, String hailMary){
+        this.spilSystem = spilSystem;
+        this.firegangefire = firegangefire;
+        this.defensiv = defensiv;
+        this.offensiv = offensiv;
+        this.hailMary = hailMary;
+    }
+
+    public void setSpilSystem(String spilSystem){
+        this.spilSystem = spilSystem;
+    }
+
+    public String getSpilSystem(){
+        return spilSystem;
+    }
+}
