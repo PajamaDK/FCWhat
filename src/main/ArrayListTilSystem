@@ -1,0 +1,65 @@
+import javax.swing.text.AbstractDocument;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+
+import java.util.ArrayList;
+
+/**
+ * Created by FrederikPetersen on 04/12/2015.
+ */
+public class ArrayListTilSystem {
+
+    // metode der retunere en ArrayList<>()
+   public ArrayList<SpilSystemArray> getPlayStyle() {
+
+       //intsansvariabler:
+       long længde;
+       String linje;
+       BufferedReader matchBuff = null;
+
+        // oprettelse ad ny arraylist til vores try/catch.
+       ArrayList<SpilSystemArray> spilDakDik = new ArrayList<>();
+
+       /* 1. I vores try del anvender vi vores bufferedReader (matchBuff) som vi har sat til null. i matchBuff
+        *    metoden opretter vi en ny FileReader som tager vores taktik.txt in og læser den igennem.
+        *
+        * 2. Dernæst sætter vi et loop igang som siger (linje er lig med vores taktik.txt) ikke er lig med null så skal
+        *    vi fortsætte.
+        *
+        * 3. Inde i vores while løkke sætter vi en array af string og tilføjer en split som dele objekterne med et komma
+        *    i vores arraylist.
+        *
+        * 4. nu lægges der opbjekter ind i vores spilDakDik med add() metoden.
+        */
+       try {
+           matchBuff = new BufferedReader(new FileReader("taktik.txt"));
+           while ((linje = matchBuff.readLine()) != null) {
+
+               String[] content = linje.split(" , ");
+
+               spilDakDik.add(new SpilSystemArray(content[0], content[1], content[2], content[3], content[4]));
+
+           }
+
+       /*
+        *
+        */
+
+       } catch (IOException e) {
+           e.printStackTrace();
+       } finally {
+
+           if (matchBuff != null) {
+               try {
+                   matchBuff.close();
+               } catch (IOException e) {
+                   e.printStackTrace();
+
+               }
+           }
+       }return spilDakDik;
+   }
+}
